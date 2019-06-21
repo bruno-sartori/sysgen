@@ -39,6 +39,11 @@ _For more examples and usage, please refer to the [Wiki][wiki]._
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
 
+## Donation
+If this project help you reduce time to develop, you can give me a cup of coffee :) 
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=NMPGBVAHJZEN2&currency_code=USD&source=url)
+
 <!-- Markdown link & img dfn's -->
 [wiki]: https://github.com/bruno-sartori/sysgen/wiki
 [license]: https://img.shields.io/github/license/bruno-sartori/sysgen.svg?style=flat-square
