@@ -1,7 +1,7 @@
 {
-  "name": "db-hygen",
+  "name": "sysgen",
   "version": "1.0.0",
-  "description": "A hygen based api generator that generates files based on your database",
+  "description": "A code generator that reads your database to create/update the code.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bruno-sartori/db-hygen.git"
+    "url": "git+https://github.com/bruno-sartori/sysgen.git"
   },
   "keywords": [
     "API",
@@ -19,12 +19,13 @@
   "author": "Bruno Sartori <brunosartori.webmaster@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bruno-sartori/db-hygen/issues"
+    "url": "https://github.com/bruno-sartori/sysgen/issues"
   },
-  "homepage": "https://github.com/bruno-sartori/db-hygen#readme",
+  "homepage": "https://github.com/bruno-sartori/sysgen#readme",
   "dependencies": {
     "chalk": "^2.4.2",
     "hygen": "^4.0.2",
+    "inquirer": "^6.4.1",
     "lodash": "^4.17.11",
     "mysql2": "^1.6.5",
     "sequelize": "^5.8.10"

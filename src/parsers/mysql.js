@@ -5,7 +5,10 @@ import Sequelize from 'sequelize';
 import writter from '../writter';
 
 class MysqlParser {
-	constructor(dbUser, dbPassword, dbName, dbHost = 'localhost', excludeTables) {
+	constructor(data) { // dbUser, dbPassword, dbName, dbHost = 'localhost', excludeTables) {
+		console.log(data);
+		const { appName, dbName, dbHost, dbUser, dbPassword, excludeTables } = data;
+
 		this.db = new Sequelize(dbName, dbUser, dbPassword, {
 			host: dbHost,
 			dialect: 'mysql',

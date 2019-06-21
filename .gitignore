@@ -1,8 +1,8 @@
 node_modules/
 docs/
-.nyc_output/
-build/
+lib/
 coverage/
 docs/
 logs/
 app/
+.nyc_output/
