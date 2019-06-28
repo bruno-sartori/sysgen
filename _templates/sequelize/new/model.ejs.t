@@ -1,5 +1,5 @@
 ---
-to: app/models/<%= h.inflection.camelize(name) %>.js
+to: app/src/models/<%= h.inflection.camelize(name) %>.js
 ---
 
 <%

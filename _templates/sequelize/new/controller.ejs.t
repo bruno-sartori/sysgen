@@ -1,5 +1,5 @@
 ---
-to: app/controllers/<%= h.inflection.camelize(name) %>.js
+to: app/src/controllers/<%= h.inflection.camelize(name) %>.js
 ---
 
 <%

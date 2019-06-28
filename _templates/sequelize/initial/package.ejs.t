@@ -1,0 +1,73 @@
+---
+to: app/package.json
+---
+
+{
+  "name": "<%= appName %>",
+  "version": "1.0.0",
+  "description": "API",
+  "main": "build/index.js",
+  "scripts": {
+    "start": "NODE_ENV=development nodemon --exec 'babel-node' src/index.js",
+    "start:production": "NODE_ENV=production node build/index.js",
+    "test": "NODE_ENV=test jest --watch --config jest.config.js --forceExit test/**/*",
+    "test:integration": "NODE_ENV=test jest --watch --config jest.config.js --forceExit test/integration/**/*.js",
+    "test:unit": "NODE_ENV=test jest --watch --config jest.config.js --forceExit test/unit/**/*.js",
+    "lint": "eslint '**/*.js'",
+    "lint:fix": "eslint '**/*.js' --fix",
+    "docs": "./node_modules/.bin/jsdoc --verbose -r ./ -c jsdoc.json -d ./docs",
+    "build": "./node_modules/.bin/babel src -d build",
+    "migrate": "./scripts/migrate.sh",
+    "docker-prod:dev": "sudo docker-compose -f ./docker/docker-compose.yml up -d",
+    "docker-prod:build": "sudo docker-compose -f ./docker/docker-compose.yml build"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^7.0.0-bridge.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.2",
+    "eslint-config-prettier": "^5.1.0",
+    "eslint-plugin-compat": "^3.1.2",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
+    "faker": "^4.1.0"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4",
+    "axios": "^0.18.0",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "bcrypt": "^3.0.2",
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.0",
+    "cors": "^2.8.4",
+    "docxtemplater": "^3.9.9",
+    "dotenv": "^6.2.0",
+    "express": "^4.15.3",
+    "helmet": "^3.8.0",
+    "http-status": "^1.0.1",
+    "jest": "^23.6.0",
+    "jsdoc": "^3.5.5",
+    "jszip": "^2.6.1",
+    "jwt-simple": "^0.5.1",
+    "lodash": "^4.17.4",
+    "mikronode": "^2.3.10",
+    "moment": "^2.18.1",
+    "morgan": "^1.8.2",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.3",
+    "node-ssh": "^5.1.1",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2",
+    "sequelize": "^4.43.0",
+    "socket.io": "^2.0.1",
+    "winston": "^3.2.1"
+  }
+}

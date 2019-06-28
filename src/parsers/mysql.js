@@ -8,6 +8,12 @@ class MysqlParser {
 	constructor(data) { // dbUser, dbPassword, dbName, dbHost = 'localhost', excludeTables) {
 		console.log(data);
 		const { appName, dbName, dbHost, dbUser, dbPassword, excludeTables } = data;
+		
+		this.appName = appName;
+		this.dbName = dbName;
+		this.dbHost = dbHost;
+		this.dbUser = dbUser;
+		this.dbPassword = dbPassword;
 
 		this.db = new Sequelize(dbName, dbUser, dbPassword, {
 			host: dbHost,
@@ -15,7 +21,6 @@ class MysqlParser {
 			logging: null
 		});
 
-		this.dbName = dbName;
 		this.models = [];
 		this.excludeTables = excludeTables.split('|');
 	}
@@ -74,8 +79,11 @@ class MysqlParser {
 
 	async generateFiles() {
 		try {
+			let args = `sequelize initial --name ${this.appName} --dbHost ${this.dbHost} --dbName ${this.dbName} --dbUser ${this.dbUser} --dbPassword ${this.dbPassword}`;
+			writter(args);
+
 			for (let i = 0; i < this.models.length; i++) {
-				const args = `sequelize new --name ${this.models[i].name} --columns ${JSON.stringify(this.models[i].columns)}`;
+				args = `sequelize new --name ${this.models[i].name} --columns ${JSON.stringify(this.models[i].columns)}`;
 				writter(args);
 			}
 
