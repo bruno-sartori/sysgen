@@ -1,7 +1,7 @@
 const { runner } = require('hygen')
 const Logger = require('hygen/lib/logger')
 const path = require('path')
-const defaultTemplates = path.join(__dirname, '../templates')
+const defaultTemplates = path.join(__dirname, '../_templates')
 
 const logger = new Logger(console.log.bind(console));
 
