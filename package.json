@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src --out-dir lib",
-    "start": "npm run build && node index.js",
-    "precommit": "npm run build"
+    "start": "npm run build && node index.js"
   },
   "bin": {
     "sysgen": "index.js"
