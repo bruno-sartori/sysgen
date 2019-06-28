@@ -3,7 +3,7 @@ to: app/package.json
 ---
 
 {
-  "name": "<%= appName %>",
+  "name": "<%= name %>",
   "version": "1.0.0",
   "description": "API",
   "main": "build/index.js",

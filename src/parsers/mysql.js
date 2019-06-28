@@ -79,11 +79,11 @@ class MysqlParser {
 
 	async generateFiles() {
 		try {
-			let args = `sequelize initial --name ${this.appName} --dbHost ${this.dbHost} --dbName ${this.dbName} --dbUser ${this.dbUser} --dbPassword ${this.dbPassword}`;
-			writter(args);
+			const initialArgs = `sequelize initial --name ${this.appName} --dbHost ${this.dbHost} --dbName ${this.dbName} --dbUser ${this.dbUser} --dbPassword ${this.dbPassword}`;
+			writter(initialArgs);
 
 			for (let i = 0; i < this.models.length; i++) {
-				args = `sequelize new --name ${this.models[i].name} --columns ${JSON.stringify(this.models[i].columns)}`;
+				const args = `sequelize new --name ${this.models[i].name} --columns ${JSON.stringify(this.models[i].columns)}`;
 				writter(args);
 			}
 

@@ -11,7 +11,7 @@ ENV DB_HOST <%= dbHost %>
 ENV DB_USER <%= dbUser %>
 ENV DB_PASSWORD <%= dbPassword %>
 
-MAINTAINER <%= appUser %>
+MAINTAINER <%= dbUser %>
 
 RUN npm i -g npm
 RUN npm i -g yarn
