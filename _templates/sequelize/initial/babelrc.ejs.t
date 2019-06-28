@@ -1,7 +1,6 @@
 ---
 to: app/.babelrc
 ---
-
 {
   "presets": [
 	  	[

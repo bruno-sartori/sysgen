@@ -1,7 +1,6 @@
 ---
 to: app/src/index.js
 ---
-
 const dotenv = require('dotenv');
 
 let envPath;

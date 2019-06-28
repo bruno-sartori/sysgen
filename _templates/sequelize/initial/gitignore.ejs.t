@@ -1,7 +1,6 @@
 ---
 to: app/.gitignore
 ---
-
 node_modules/
 docs/
 .nyc_output/

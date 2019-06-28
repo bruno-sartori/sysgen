@@ -1,7 +1,6 @@
 ---
 to: app/src/auth.js
 ---
-
 import passport from 'passport';
 import { Strategy, ExtractJwt } from 'passport-jwt';
 

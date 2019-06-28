@@ -1,7 +1,6 @@
 ---
 to: app/package.json
 ---
-
 {
   "name": "<%= name %>",
   "version": "1.0.0",

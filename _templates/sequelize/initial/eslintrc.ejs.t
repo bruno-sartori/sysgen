@@ -1,7 +1,6 @@
 ---
 to: app/eslintrc.json
 ---
-
 {
   "extends": ["airbnb", "prettier", "plugin:compat/recommended"],
   "parserOptions": {

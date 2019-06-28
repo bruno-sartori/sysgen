@@ -1,7 +1,6 @@
 ---
 to: app/.sequelizerc
 ---
-
 var path = require('path');
 
 module.exports = {

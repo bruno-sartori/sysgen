@@ -1,7 +1,6 @@
 ---
 to: app/.eslintignore
 ---
-
 .vscode/
 docker/
 logs/
