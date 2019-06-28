@@ -1,6 +1,6 @@
 {
   "name": "sysgen",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A code generator that reads your database to create/update the code.",
   "preferGlobal": true,
   "scripts": {
@@ -41,6 +41,7 @@
     "node": ">=10.15.0"
   },
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "_templates/**/*"
   ]
 }
