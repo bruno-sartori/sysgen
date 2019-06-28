@@ -6,7 +6,7 @@ import { Strategy, ExtractJwt } from 'passport-jwt';
 
 export default (app) => {
 	const logger = app.logger;
-	const <%= h.inflection.camelize(userTable) %> = app.datasource.models.<%= h.inflection.camelize(userTable) %>;
+	const <%= h.inflection.camelize(userTable) %> = app.datasource.db.models.<%= h.inflection.camelize(userTable) %>;
 	const opts = {};
 	opts.secretOrKey = app.config.jwtSecret;
 	opts.jwtFromRequest = ExtractJwt.fromAuthHeader();

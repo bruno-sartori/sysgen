@@ -47,7 +47,7 @@ app.use(app.auth.initialize());
 
 authRoute(app);
 
-app.route('*').all(app.auth.authenticate(), app.auth.getToken(), auditMiddleware(app));
+app.route('*').all(app.auth.authenticate(), app.auth.getToken());
 
 routes(app);
 

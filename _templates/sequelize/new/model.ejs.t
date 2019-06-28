@@ -3,11 +3,8 @@ to: app/src/models/<%= h.inflection.camelize(name) %>.js
 ---
 <% if (name === userTable) { %>
 import bcrypt from 'bcrypt';
-<% } %>
-<%
+<% } 
 	Name = h.inflection.camelize(name)
-%>
-<%
 	Columns = JSON.parse(columns)
 %>
 export default (sequelize, DataType) => {
