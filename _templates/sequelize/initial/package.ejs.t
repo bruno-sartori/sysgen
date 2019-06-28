@@ -7,8 +7,8 @@ to: app/package.json
   "description": "API",
   "main": "build/index.js",
   "scripts": {
-    "start": "NODE_ENV=development nodemon --exec 'babel-node' src/index.js",
-    "start:production": "NODE_ENV=production node build/index.js",
+    "start": "npm run build && NODE_ENV=development node index.js",
+    "start:production": "NODE_ENV=production node index.js",
     "test": "NODE_ENV=test jest --watch --config jest.config.js --forceExit test/**/*",
     "test:integration": "NODE_ENV=test jest --watch --config jest.config.js --forceExit test/integration/**/*.js",
     "test:unit": "NODE_ENV=test jest --watch --config jest.config.js --forceExit test/unit/**/*.js",
