@@ -1,12 +1,13 @@
 {
   "name": "sysgen",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A code generator that reads your database to create/update the code.",
   "preferGlobal": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src --out-dir lib",
-    "start": "npm run build && node index.js"
+    "start": "npm run build && node index.js",
+    "precommit": "npm run build"
   },
   "bin": {
     "sysgen": "index.js"

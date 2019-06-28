@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 const MysqlParser = require('./lib/parsers/mysql').default;
 const inquirer = require('inquirer');
 
