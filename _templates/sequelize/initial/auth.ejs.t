@@ -6,19 +6,19 @@ import { Strategy, ExtractJwt } from 'passport-jwt';
 
 export default (app) => {
 	const logger = app.logger;
-	const User = app.datasource.models.User;
+	const <%= h.inflection.camelize(userTable) %> = app.datasource.models.<%= h.inflection.camelize(userTable) %>;
 	const opts = {};
 	opts.secretOrKey = app.config.jwtSecret;
 	opts.jwtFromRequest = ExtractJwt.fromAuthHeader();
 
 	const strategy = new Strategy(opts, async (payload, done) => {
 		try {
-			const user = await Operador.findOne({ id: payload.id });
+			const <%= userTable %> = await <%= h.inflection.camelize(userTable) %>.findOne({ id: payload.id });
 
-			if (user) {
+			if (<%= userTable %>) {
 				return done(null, {
-					id: user.id,
-					login: user.login,
+					id: <%= userTable %>.id,
+					<%= userLogin %>: <%= userTable %>.<%= userLogin %>,
 				});
 			}
 

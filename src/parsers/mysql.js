@@ -5,15 +5,17 @@ import Sequelize from 'sequelize';
 import writter from '../writter';
 
 class MysqlParser {
-	constructor(data) { // dbUser, dbPassword, dbName, dbHost = 'localhost', excludeTables) {
-		console.log(data);
-		const { appName, dbName, dbHost, dbUser, dbPassword, excludeTables } = data;
+	constructor(data) {
+		const { appName, dbName, dbHost, dbUser, dbPassword, userTable, userLogin, userPassword, excludeTables } = data;
 		
 		this.appName = appName;
 		this.dbName = dbName;
 		this.dbHost = dbHost;
 		this.dbUser = dbUser;
 		this.dbPassword = dbPassword;
+		this.userTable = userTable;
+		this.userLogin = userLogin;
+		this.userPassword = userPassword;
 
 		this.db = new Sequelize(dbName, dbUser, dbPassword, {
 			host: dbHost,
@@ -79,11 +81,12 @@ class MysqlParser {
 
 	async generateFiles() {
 		try {
-			const initialArgs = `sequelize initial --name ${this.appName} --dbHost ${this.dbHost} --dbName ${this.dbName} --dbUser ${this.dbUser} --dbPassword ${this.dbPassword}`;
+			const initialArgs = `sequelize initial --name ${this.appName} --dbHost ${this.dbHost} --dbName ${this.dbName} --dbUser ${this.dbUser} --dbPassword ${this.dbPassword} --userTable ${this.userTable} --userLogin ${this.userLogin} --userPassword ${this.userPassword}`;
 			writter(initialArgs);
 
 			for (let i = 0; i < this.models.length; i++) {
-				const args = `sequelize new --name ${this.models[i].name} --columns ${JSON.stringify(this.models[i].columns)}`;
+				console.log(this.userTable);
+				const args = `sequelize new --name ${this.models[i].name} --columns ${JSON.stringify(this.models[i].columns)} --userTable ${this.userTable} --userLogin ${this.userLogin} --userPassword ${this.userPassword}`;
 				writter(args);
 			}
 

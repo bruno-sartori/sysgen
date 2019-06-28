@@ -14,7 +14,6 @@ import datasource from './config/datasource';
 import config from './config/config';
 import authorization from './auth';
 import logger from './util/logger';
-import error404Middleware from './middlewares/error404';
 
 const whitelist = [
 	'http://localhost:8000'
@@ -52,6 +51,8 @@ app.route('*').all(app.auth.authenticate(), app.auth.getToken(), auditMiddleware
 
 routes(app);
 
-app.use(error404Middleware);
+app.use((req, res) => {
+	res.status(404).json({ data: '', meta: { message: 'NOT FOUND' } });
+});
 
 export default app;

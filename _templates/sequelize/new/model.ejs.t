@@ -1,15 +1,15 @@
 ---
 to: app/src/models/<%= h.inflection.camelize(name) %>.js
 ---
-
+<% if (name === userTable) { %>
+import bcrypt from 'bcrypt';
+<% } %>
 <%
 	Name = h.inflection.camelize(name)
 %>
-
 <%
 	Columns = JSON.parse(columns)
 %>
-
 export default (sequelize, DataType) => {
 	const <%= Name %> = sequelize.define('<%= Name %>',
 		{
@@ -25,8 +25,18 @@ export default (sequelize, DataType) => {
 		},
 		{
 			tableName: '<%= name %>',
+			<% if (name === userTable) { %>
+			hooks: {
+				beforeCreate: (<%= name %>) => {
+					const salt = bcrypt.genSaltSync();
+					<%= name %>.set('<%= userPassword %>', bcrypt.hashSync(<%= name %>.<%= userPassword %>, salt));
+				}
+			},
+			<% } %>
 		}
 	);
-
+	<% if (name === userTable) { %>
+	<%= Name %>.isPassword = (encodedPassword, password) => bcrypt.compareSync(password, encodedPassword);
+	<% } %>
 	return <%= Name %>;
 };

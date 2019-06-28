@@ -1,6 +1,6 @@
 {
   "name": "sysgen",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A code generator that reads your database to create/update the code.",
   "preferGlobal": true,
   "scripts": {

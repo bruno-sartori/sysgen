@@ -1,11 +1,9 @@
 ---
 to: app/src/controllers/<%= h.inflection.camelize(name) %>.js
 ---
-
 <%
 	Name = h.inflection.camelize(name)
 %>
-
 import HttpStatus from 'http-status';
 import { Op } from 'sequelize';
 import { defaultResponse, errorResponse } from '../util/responses';
@@ -134,6 +132,49 @@ class <%= Name %>Controller extends Controller {
 			return errorResponse(error, HttpStatus.UNPROCESSABLE_ENTITY);
 		}
 	}
+
+	<% if (name === userTable) { %>
+	async login(login, password) {
+		try {
+			const <%= name %> = await this.<%= Name %>.findOne({
+				where: { login }
+			});
+
+			if (<%= name %> === null) {
+				throw new AccessDeniedError('<%= Name %> not found');
+			}
+
+			if (this.<%= Name %>.isPassword(<%= name %>.<%= userPassword %>, password)) {
+				logger.debug(`Auth granted for user: ${<%= name %>.<%= userLogin %>} and password: ${<%= name %>.<%= userPassword %>}`);
+
+				const payload = {
+					id: <%= name %>.id,
+					login: <%= name %>.<%= userLogin %>,
+					date: new Date()
+				};
+
+				const token = jwt.encode(payload, config.jwtSecret);
+				const tokenExpires = moment(new Date()).add(config.jwtExpire, 'minutes').format('YYYY-MM-DD HH:mm:ss');
+
+				const appVersion = require('../../package.json').version;
+
+				const response = {
+					token,
+					tokenExpires,
+					appVersion,
+					status: 'ok'
+				};
+
+				return defaultResponse({}, response);
+			}
+
+			logger.error(`Passwords not match: ${<%= name %>.<%= userPassword %>} - ${password}`);
+			throw new Error('Invalid login or password');
+		} catch (error) {
+			return errorResponse(error, error.statusCode || HttpStatus.UNAUTHORIZED);
+		}
+	}
+	<% } %>
 
 }
 
